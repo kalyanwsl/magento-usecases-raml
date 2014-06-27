@@ -17,8 +17,8 @@ mediaType: application/json
       200:
         body:
           application/json:
-            schema: !include OrderResponse.sechema
-            example: !include OrderResponse200.json
+            schema: !include get-order-response.schema
+            example: !include get-order-response-200Json.example
       400:
         body:
           application/json:
@@ -31,14 +31,14 @@ mediaType: application/json
   post:
     body:
       application/json:
-        schema: !include productRequest.schema
-        example: !include productRequest.json
+        schema: !include create-product-request.schema
+        example: !include create-product-request-Json.example
     responses:
       200:
         body:
           application/json:
-            schema: !include productResponse200.schema
-            example: !include procuctResponse200.json
+            schema: !include create-product-response-200.schema
+            example: !include create-procuct-response-200Json.example
       400:
         body:
           application/json:
@@ -47,3 +47,19 @@ mediaType: application/json
               {
                 "message" : "An exception was thrown while invoking create Product Service"
               }   
+/shoppingCart/createShoppingCart:
+  post:
+    description: Create a shopping cart.
+    body:
+      application/json:
+        schema: !include create-shopping-cart-json.schema
+        example: !include create-shopping-cart-json.example
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "name":"kalyan",
+                "dept":"IT"
+              }

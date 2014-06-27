@@ -14,8 +14,6 @@ http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/a
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
 	version="EE-3.5.0">
 
-	
-
 	<flow name="connect-magento-main" doc:name="connect-magento-main">
 		<http:inbound-endpoint address="http://localhost:8082/service/v1"
 			doc:name="HTTP" />
@@ -35,8 +33,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 				<add-message-property key="Content-Type" value="application/json" />
 			</message-properties-transformer>
 			<set-payload
-				value="{ &quot;message&quot; : &quot;#[exception.getCause().getMessage()] #[exception.getMessage()]&quot; }"
-				doc:name="Set Payload" />
+				value="{ &quot;Error message&quot; : &quot;#[exception.getCause().getMessage()] #[exception.getMessage()]&quot; }"
+				doc:name="set-error-message" />
 
 		</catch-exception-strategy>
 	</flow>

@@ -1,16 +1,20 @@
-package com.whiteskylabs.product;
+package com.whiteskylabs.magento.product;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.mule.api.MuleMessage;
+import org.mule.api.transformer.TransformerException;
+import org.mule.transformer.AbstractMessageTransformer;
+import org.mule.transformer.AbstractTransformer;
 
-public class test {
+public class GetProductResponse extends AbstractMessageTransformer {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Override
+	public Object transformMessage(MuleMessage message, String outputEncoding)
+			throws TransformerException {
 		// TODO Auto-generated method stub
 		JSONObject header = new JSONObject();
 		header.put("DateTime", new SimpleDateFormat("yyyyMMdd HH:mm:ss").format(Calendar.getInstance().getTime()) );
@@ -20,8 +24,13 @@ public class test {
 		productResponse.put("ResponseDescription", "Product Successfully Created");
 		
 		JSONObject productInformation = new JSONObject();
-		productInformation.put("ProductId", 1);
-		
+		try {
+			String productId = message.getPayloadAsString();
+			productInformation.put("ProductId", productId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 		JSONObject parent = new JSONObject();
 		parent.put("HeaderInfo", header );
@@ -29,8 +38,12 @@ public class test {
 		parent.put("ProductInformation", productInformation );
 		System.out.println( parent );
 		
-		
-
+		return parent;
 	}
+	
+
+	
+	
+	
 
 }

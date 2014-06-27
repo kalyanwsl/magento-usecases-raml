@@ -1,0 +1,87 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required":true,
+  "properties":{
+    "customerDetails": {
+      "type":"object",
+      "id": "http://jsonschema.net/customerDetails",
+      "required":true,
+      "properties":{
+        "customerId": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/customerId",
+          "required":true
+        },
+        "email": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/email",
+          "required":true
+        },
+        "firstName": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/firstName",
+          "required":true
+        },
+        "groupId": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/groupId",
+          "required":true
+        },
+        "lastName": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/lastName",
+          "required":true
+        },
+        "mode": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/mode",
+          "required":true
+        },
+        "password": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/password",
+          "required":true
+        },
+        "storeId": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/storeId",
+          "required":true
+        },
+        "websiteId": {
+          "type":"string",
+          "id": "http://jsonschema.net/customerDetails/websiteId",
+          "required":true
+        }
+      }
+    },
+    "productDetails": {
+      "type":"object",
+      "id": "http://jsonschema.net/productDetails",
+      "required":true,
+      "properties":{
+        "productId": {
+          "type":"string",
+          "id": "http://jsonschema.net/productDetails/productId",
+          "required":true
+        },
+        "qty": {
+          "type":"string",
+          "id": "http://jsonschema.net/productDetails/qty",
+          "required":true
+        },
+        "sku": {
+          "type":"string",
+          "id": "http://jsonschema.net/productDetails/sku",
+          "required":true
+        }
+      }
+    },
+    "storeId": {
+      "type":"string",
+      "id": "http://jsonschema.net/storeId",
+      "required":true
+    }
+  }
+}

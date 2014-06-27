@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:magento="http://www.mulesoft.org/schema/mule/magento"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.mulesoft.org/schema/mule/magento http://www.mulesoft.org/schema/mule/magento/current/mule-magento.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd"
+	version="EE-3.5.0">
+
+	<flow name="post:/shoppingCart/createShoppingCart:connect-magento-config"
+		doc:name="post:/shoppingCart/createShoppingCart:connect-magento-config">
+
+		<set-property propertyName="shoppingCartDetails" value="#[payload]"
+			doc:name="set-json-payload" />
+		<magento:create-shopping-cart config-ref="Magento"
+			doc:name="create-shopping-cart" storeId="#[json:storeId]" />
+		<set-property propertyName="quoteId" value="#[payload]"
+			doc:name="store-shopping-cart-id" />
+        <custom-transformer class="com.whiteskylabs.magento.createshoppingcart.CreateShoppingCartResponse" doc:name="set-json-response"/>
+		<!-- <set-payload value="#[message.outboundProperties.shoppingCartDetails]"
+			doc:name="set-shopping-request-as-payload" />
+		<magento:set-shopping-cart-customer
+			config-ref="Magento" quoteId="#[message.outboundProperties.quoteId]"
+			doc:name="set-shopping-cart-customer" storeId="#[json:customerDetails/storeId]">
+			<magento:customer customer_id="#[json:customerDetails/customerId]"
+				mode="billing" email="#[json:customerDetails/email]" firstname="#[json:customerDetails/firstName]"
+				lastname="#[json:customerDetails/lastName]" password="#[json:customerDetails/password]"
+				store_id="#[json:customerDetails/storeId]" group_id="#[json:customerDetails/groupId]"
+				website_id="#[json:customerDetails/websiteId]" />
+		</magento:set-shopping-cart-customer> -->
+		<catch-exception-strategy doc:name="Catch Exception Strategy">
+			<message-properties-transformer
+				doc:name="set-properties">
+				<add-message-property key="http.status" value="400" />
+				<add-message-property key="Content-Type" value="application/json" />
+			</message-properties-transformer>
+			<set-payload
+				value="{ &quot;Error message&quot; : &quot;#[exception.getCause().getMessage()] #[exception.getMessage()]&quot; }"
+				doc:name="set-error-message" />
+
+		</catch-exception-strategy>
+	</flow>
+</mule>

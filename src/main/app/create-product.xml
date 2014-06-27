@@ -16,8 +16,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<flow name="post:/product/createProduct:connect-magento-config"
 		doc:name="post:/product/createProduct:connect-magento-config">
-		<json:json-to-object-transformer
-			doc:name="JSON to Object" />
 		<logger
 			message="&quot;Product type&quot;:::::::::::::::#[payload]:::::::::::::::::::::::::::#[json:ProductInformation/type] "
 			level="INFO" doc:name="Logger" />
@@ -30,7 +28,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 				weight="#[json:ProductInformation/ProductWeight] " status="#[json:ProductInformation/ProductStatus] "
 				visibility="#[json:ProductInformation/ProductVisibility] " />
 		</magento:create-product>
-		<custom-transformer class="com.whiteskylabs.product.GetProductResponse"
+		<custom-transformer class="com.whiteskylabs.magento.product.GetProductResponse"
 			doc:name="Java" />
 		<catch-exception-strategy doc:name="Catch Exception Strategy">
 			<message-properties-transformer
@@ -39,9 +37,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 				<add-message-property key="Content-Type" value="application/json" />
 			</message-properties-transformer>
 			<set-payload
-				value="{ &quot;message&quot; : &quot;#[exception.getCause().getMessage()] #[exception.getMessage()]&quot; }"
+				value="{ &quot;Error message&quot; : &quot;#[exception.getCause().getMessage()] #[exception.getMessage()]&quot; }"
 				doc:name="Set Payload" />
-
 		</catch-exception-strategy>
 	</flow>
 </mule>
