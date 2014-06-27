@@ -1,0 +1,42 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required":false,
+  "properties":{
+    "CreateProductResponse": {
+      "type":"object",
+      "required":false,
+      "properties":{
+        "ReasonCode": {
+          "type":"string",
+          "required":false
+        },
+        "ReasonDescription": {
+          "type":"string",
+          "required":false
+        }
+      }
+    },
+    "Header": {
+      "type":"object",
+      "required":false,
+      "properties":{
+        "DateTime": {
+          "type":"string",
+          "required":false
+        }
+      }
+    },
+    "ProductInformation": {
+      "type":"object",
+      "required":false,
+      "properties":{
+        "ProductId": {
+          "type":"number",
+          "required":false
+        }
+      }
+    }
+  }
+}

@@ -19,14 +19,14 @@ public class CreateShoppingCartResponse extends AbstractMessageTransformer {
 	  JSONObject header = new JSONObject();
 	  header.put("DateTime", new SimpleDateFormat("yyyyMMdd HH:mm:ss").format(Calendar.getInstance().getTime()) );
 	  
-	  JSONObject productResponse = new JSONObject();
-	  productResponse.put("ResponseCode", "Success");  
-	  productResponse.put("ResponseDescription", "Shopping cart Successfully Created");
+	  JSONObject shoppingCartResponse = new JSONObject();
+	  shoppingCartResponse.put("ResponseCode", "Success");  
+	  shoppingCartResponse.put("ResponseDescription", "Shopping cart Created Successfully");
 	  
-	  JSONObject productInformation = new JSONObject();
+	  JSONObject shoppingCartInformation = new JSONObject();
 	  try {
-	   String productId = message.getPayloadAsString();
-	   productInformation.put("QuoteId", productId);
+	   String shoppingCartId = message.getPayloadAsString();
+	   shoppingCartInformation.put("QuoteId", shoppingCartId);
 	  } catch (Exception e) {
 	   // TODO Auto-generated catch block
 	   e.printStackTrace();
@@ -34,8 +34,7 @@ public class CreateShoppingCartResponse extends AbstractMessageTransformer {
 	  
 	  JSONObject parent = new JSONObject();
 	  parent.put("HeaderInfo", header );
-	  //parent.put("CreateProductResponse", productResponse );
-	  parent.put("Shopping Cart Information", productInformation );
+	  parent.put("Shopping Cart Information", shoppingCartInformation );
 	  System.out.println( parent );
 	  
 	  return parent;
