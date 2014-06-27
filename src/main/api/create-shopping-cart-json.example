@@ -1,0 +1,19 @@
+{
+    "storeId": "1",
+    "productDetails": {
+        "productId": "3",
+        "sku": "simple:sku1",
+        "qty": "1"
+    },
+    "customerDetails": {
+        "customerId": "2",
+        "mode": "billing",
+        "email": "kalyan.menda@gmail.com",
+        "password": "kalyan",
+        "firstName": "kalyan",
+        "lastName": "M",
+        "storeId": "1",
+        "groupId": "1",
+        "websiteId": "1"
+    }
+  }

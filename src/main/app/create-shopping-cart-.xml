@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:magento="http://www.mulesoft.org/schema/mule/magento"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.mulesoft.org/schema/mule/magento http://www.mulesoft.org/schema/mule/magento/current/mule-magento.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd"
+	version="EE-3.5.0">
+	<apikit:config name="create-shopping-cart-order-config"
+		raml="create-shopping-cart-order.raml" consoleEnabled="true"
+		consolePath="console" doc:name="Router" />
+	<apikit:mapping-exception-strategy
+		name="create-shopping-cart-order-apiKitGlobalExceptionMapping">
+		<apikit:mapping statusCode="404">
+			<apikit:exception
+				value="org.mule.module.apikit.exception.NotFoundException" />
+			<set-property propertyName="Content-Type" value="application/json" />
+			<set-payload
+				value="{ &quot;message&quot;: &quot;Resource not found&quot; }" />
+		</apikit:mapping>
+		<apikit:mapping statusCode="405">
+			<apikit:exception
+				value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+			<set-property propertyName="Content-Type" value="application/json" />
+			<set-payload
+				value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" />
+		</apikit:mapping>
+		<apikit:mapping statusCode="415">
+			<apikit:exception
+				value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+			<set-property propertyName="Content-Type" value="application/json" />
+			<set-payload
+				value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" />
+		</apikit:mapping>
+		<apikit:mapping statusCode="406">
+			<apikit:exception
+				value="org.mule.module.apikit.exception.NotAcceptableException" />
+			<set-property propertyName="Content-Type" value="application/json" />
+			<set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" />
+		</apikit:mapping>
+		<apikit:mapping statusCode="400">
+			<apikit:exception
+				value="org.mule.module.apikit.exception.BadRequestException" />
+			<set-property propertyName="Content-Type" value="application/json" />
+			<set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" />
+		</apikit:mapping>
+	</apikit:mapping-exception-strategy>
+	<magento:config name="Magento" username="${magento.username}"
+		password="${magento.password}" address="${magento.serviceurl}"
+		doc:name="Magento" />
+	<flow name="create-shopping-cart-order-main" doc:name="create-shopping-cart-order-main">
+		<http:inbound-endpoint address="http://localhost:8081/magento"
+			doc:name="HTTP" exchange-pattern="request-response" />
+		<apikit:router config-ref="create-shopping-cart-order-config"
+			doc:name="APIkit Router" />
+		<exception-strategy
+			ref="create-shopping-cart-order-apiKitGlobalExceptionMapping"
+			doc:name="Reference Exception Strategy" />
+	</flow>
+	<flow name="post:/createShoppingCart:create-shopping-cart-order-config"
+		doc:name="post:/createShoppingCart:create-shopping-cart-order-config">
+		<set-property propertyName="shoppingCartDetails" value="#[payload]"
+			doc:name="Property" />
+		<magento:create-shopping-cart config-ref="Magento"
+			doc:name="Magento" storeId="#[json:storeId]" />
+		<set-property propertyName="quoteId" value="#[payload]"
+			doc:name="store-shopping-cart-id" />
+		<set-payload value="#[message.outboundProperties.shoppingCartDetails]"
+			doc:name="Set Payload" />
+		<magento:set-shopping-cart-customer
+			config-ref="Magento" quoteId="#[message.outboundProperties.quoteId]"
+			doc:name="set-shopping-cart-customer" storeId="1">
+			<magento:customer customer_id="#[json:customerDetails/customerId]"
+				mode="billing" email="#[json:customerDetails/email]" firstname="#[json:customerDetails/firstName]"
+				lastname="#[json:customerDetails/lastName]" password="#[json:customerDetails/password]"
+				store_id="#[json:customerDetails/storeId]" group_id="#[json:customerDetails/groupId]"
+				website_id="#[json:customerDetails/websiteId]" />
+		</magento:set-shopping-cart-customer>
+
+	</flow>
+</mule>
