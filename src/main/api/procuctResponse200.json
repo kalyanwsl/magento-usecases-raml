@@ -1,0 +1,12 @@
+{
+  "Header":{
+     "DateTime" : "Sat 23 2014 01:10:00 IST"
+  }, 
+  "CreateProductResponse" : {                      
+      "ReasonCode": "Success",
+      "ReasonDescription":""                      
+  },                    
+  "ProductInformation":{
+      "ProductId": 1
+  }
+}

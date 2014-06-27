@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "properties": 
+    {
+      "HeaderInfo": {
+         "type": "object",
+         "required": false,
+         "properties":
+          {
+            "DateTime": 
+              {
+               "type": "string",
+               "required": false
+              }
+          }
+      },
+      "ProductInformation":{
+         "type": "object",
+         "required": true,
+         "properties":{
+            "ProductType": {
+               "type": "string",
+               "description": "Product type should be one of the values defined in the enum",
+               "enum": ["simple" , "grouped", "configurable", "virtual", "bundle", "gift" ],
+               "required": true                       
+          },
+            "ProductSet": {  
+               "description": "",
+               "type": "string",
+               "required": true
+          },
+            "ProductSku": {
+               "description": "This value should be a unique one",
+               "type": "string",  
+               "required": true
+          },
+             "ProductStoreViewId": {
+                "description": "",
+                "type": "string",
+                "required": true
+          },
+             "ProductName": {
+                "description": "",
+                "type": "string",
+                "required": true
+          } ,
+             "ProductDescription": {
+                "description": "",
+                "type": "string",
+                "required": true
+          } ,
+             "ProductShortDescription": {
+                "description": "",
+                "type": "string",
+                "required": true
+          },
+             "ProductWeight": {
+                "description": "",
+                "type": "string",
+                "required": true
+          },
+              "ProductStatus": {
+                "description": "",
+                 "type": "string",
+                 "required": true
+         },
+             "ProductVisibility": {
+                 "description": "",
+                 "type": "string",
+                 "required": true
+         }
+      }                            
+    }
+  }
+}
