@@ -1,0 +1,49 @@
+#%RAML 0.8
+title: Connect Magento
+version: v1
+baseUri: http://localhost:8082/service/{version}
+#baseUri: http://mocksvc.mulesoft.com/mocks/f4a6b56d-efba-4e52-a6e2-269e25819a2d/service/{version}
+mediaType: application/json
+/orders/getOrder:
+  get:
+    description: This service is meant to get Order details based on Order-Id.
+                 Input OrderId information as query parameter.
+    queryParameters:
+      orderId:
+        description: Input order-id to get complete details of Order.
+        example: 100000001
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include OrderResponse.sechema
+            example: !include OrderResponse200.json
+      400:
+        body:
+          application/json:
+            schema: !include exception.schema
+            example: |
+                  {
+                    "message": "Requested order not exists. Failed to invoke getOrder. Message payload is of type String"
+                  } 
+/product/createProduct:
+  post:
+    body:
+      application/json:
+        schema: !include productRequest.schema
+        example: !include productRequest.json
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include productResponse200.schema
+            example: !include procuctResponse200.json
+      400:
+        body:
+          application/json:
+            schema: !include exception.schema
+            example: |
+              {
+                "message" : "An exception was thrown while invoking create Product Service"
+              }   

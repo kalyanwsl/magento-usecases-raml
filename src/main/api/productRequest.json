@@ -1,0 +1,20 @@
+{                 
+        "HeaderInfo":
+       {
+            "DateTime" : "Sat 23 2014 01:09:52 IST"
+        }, 
+         "ProductInformation" :
+       {
+            "ProductType": "simple",
+            "ProductSet": "4",
+            "ProductSku": "grp_sku",
+            "ProductStoreViewId": "1", 
+            "ProductName": "Test123",
+            "ProductDescription": "Test Product",
+            "ProductShortDescription": "Test Product",
+            "ProductWeight": "1",
+            "ProductStatus": "1",
+            "ProductVisibility": "4"
+      }
+ }
+        

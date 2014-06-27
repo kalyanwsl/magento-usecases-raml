@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:magento="http://www.mulesoft.org/schema/mule/magento" xmlns:json="http://www.mulesoft.org/schema/mule/json"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/magento http://www.mulesoft.org/schema/mule/magento/current/mule-magento.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+	version="EE-3.5.0">
+
+	
+
+	<flow name="connect-magento-main" doc:name="connect-magento-main">
+		<http:inbound-endpoint address="http://localhost:8082/service/v1"
+			doc:name="HTTP" />
+		<apikit:router config-ref="connect-magento-config"
+			doc:name="APIkit Router" />
+		<exception-strategy ref="connect-magento-apiKitGlobalExceptionMapping"
+			doc:name="Reference Exception Strategy" />
+	</flow>
+
+	<flow name="get:/orders/getOrder:connect-magento-config" doc:name="get:/orders/getOrder:connect-magento-config">
+		<magento:get-order config-ref="Magento"
+			orderId="#[message.inboundProperties['orderId']]" doc:name="get-order-by-id" />
+		<catch-exception-strategy doc:name="Catch Exception Strategy">
+			<message-properties-transformer
+				doc:name="set-properties">
+				<add-message-property key="http.status" value="400" />
+				<add-message-property key="Content-Type" value="application/json" />
+			</message-properties-transformer>
+			<set-payload
+				value="{ &quot;message&quot; : &quot;#[exception.getCause().getMessage()] #[exception.getMessage()]&quot; }"
+				doc:name="Set Payload" />
+
+		</catch-exception-strategy>
+	</flow>
+</mule>

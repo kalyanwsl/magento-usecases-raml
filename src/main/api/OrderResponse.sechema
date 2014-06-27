@@ -1,0 +1,807 @@
+{
+    "type":"object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "required":false,
+    "properties":
+    {
+      "applied_rule_ids": 
+        {
+          "type":"string",
+          "required":false
+        },
+        "base_currency_code": 
+          {
+            "type":"string",
+            "required":false
+          },
+        "base_discount_amount": {
+          "type":"string",
+        			  "required":false
+        },
+        "base_grand_total": {
+        "type":"string",
+        "required":false
+      },
+		      "base_shipping_amount": {
+        "type":"string",
+        "required":false
+      },
+      "base_subtotal": {
+        "type":"string",
+        "required":false
+      },
+      "base_tax_amount": {
+        "type":"string",
+        "required":false
+      },
+      "base_to_global_rate": {
+        "type":"string",
+        "required":false
+      },
+      "base_to_order_rate": {
+        "type":"string",
+        "required":false
+      },
+      "base_total_canceled": {
+        "type":"string",
+        "required":false
+      },
+      "base_total_invoiced": {
+        "type":"string",
+        "required":false
+      },
+      "base_total_offline_refunded": {
+        "type":"string",
+        "required":false
+      },
+      "base_total_online_refunded": {
+        "type":"string",
+        "required":false
+      },
+      "base_total_paid": {
+        "type":"string",
+        "required":false
+      },
+      "base_total_qty_ordered": {
+        "type":"string",
+        "required":false
+      },
+      "base_total_refunded": {
+        "type":"string",
+        "required":false
+      },
+      "billing_address_id": {
+        "type":"string",
+        "required":false
+      },
+      "billing_address": {
+        "type":"object",
+        "required":false,
+        "properties":{
+          "address_id": {
+            "type":"string",
+            "required":false
+          },
+          "address_type": {
+            "type":"string",
+            "required":false
+          },
+          "city": {
+            "type":"string",
+            "required":false
+          },
+          "company": {
+            "type":"string",
+            "required":false
+          },
+          "country_id": {
+            "type":"string",
+            "required":false
+          },
+          "created_at": {
+            "type":"string",
+            "required":false
+          },
+          "fax": {
+            "type":"string",
+            "required":false
+          },
+          "firstname": {
+            "type":"string",
+            "required":false
+          },
+          "increment_id": {
+            "type":"string",
+            "required":false
+          },
+          "is_active": {
+            "type":"string",
+            "required":false
+          },
+          "lastname": {
+            "type":"string",
+            "required":false
+          },
+          "parent_id": {
+            "type":"string",
+            "required":false
+          },
+          "postcode": {
+            "type":"string",
+            "required":false
+          },
+          "region_id": {
+            "type":"string",
+            "required":false
+          },
+          "region": {
+            "type":"string",
+            "required":false
+          },
+          "street": {
+            "type":"string",
+            "required":false
+          },
+          "telephone": {
+            "type":"string",
+            "required":false
+          },
+          "updated_at": {
+            "type":"string",
+            "required":false
+          }
+        }
+      },
+      "billing_firstname": {
+        "type":"string",
+        "required":false
+      },
+      "billing_lastname": {
+        "type":"string",
+        "required":false
+      },
+      "billing_name": {
+        "type":"string",
+        "required":false
+      },
+      "created_at": {
+        "type":"string",
+        "required":false
+      },
+      "customer_email": {
+        "type":"string",
+        "required":false
+      },
+      "customer_firstname": {
+        "type":"string",
+        "required":false
+      },
+      "customer_group_id": {
+        "type":"string",
+        "required":false
+      },
+      "customer_id": {
+        "type":"string",
+        "required":false
+      },
+      "customer_is_guest": {
+        "type":"string",
+        "required":false
+      },
+      "customer_lastname": {
+        "type":"string",
+        "required":false
+      },
+      "customer_note_notify": {
+        "type":"string",
+        "required":false
+      },
+      "discount_amount": {
+        "type":"string",
+        "required":false
+      },
+      "email_sent": {
+        "type":"string",
+        "required":false
+      },
+      "gift_message_id": {
+        "type":"string",
+        "required":false
+      },
+      "gift_message": {
+        "type":"string",
+        "required":false
+      },
+      "global_currency_code": {
+        "type":"string",
+        "required":false
+      },
+      "grand_total": {
+        "type":"string",
+        "required":false
+      },
+      "increment_id": {
+        "type":"string",
+        "required":false
+      },
+      "is_active": {
+        "type":"string",
+        "required":false
+      },
+      "is_virtual": {
+        "type":"string",
+        "required":false
+      },
+      "items": {
+        "type":"array",
+        "required":false,
+        "items":
+          {
+            "type":"object",
+            "required":false,
+            "properties":{
+              "amount_refunded": {
+                "type":"string",
+                "required":false
+              },
+              "applied_rule_ids": {
+                "type":"string",
+                "required":false
+              },
+              "base_amount_refunded": {
+                "type":"string",
+                "required":false
+              },
+              "base_discount_amount": {
+                "type":"string",
+                "required":false
+              },
+              "base_discount_invoiced": {
+                "type":"string",
+                "required":false
+              },
+              "base_original_price": {
+                "type":"string",
+                "required":false
+              },
+              "base_price": {
+                "type":"string",
+                "required":false
+              },
+              "base_row_invoiced": {
+                "type":"string",
+                "required":false
+              },
+              "base_row_total": {
+                "type":"string",
+                "required":false
+              },
+              "base_tax_amount": {
+                "type":"string",
+                "required":false
+              },
+              "base_tax_before_discount": {
+                "type":"string",
+                "required":false
+              },
+              "base_tax_invoiced": {
+                "type":"string",
+                "required":false
+              },
+              "base_weee_tax_applied_amount": {
+                "type":"string",
+                "required":false
+              },
+              "base_weee_tax_applied_row_amount": {
+                "type":"string",
+                "required":false
+              },
+              "base_weee_tax_disposition": {
+                "type":"string",
+                "required":false
+              },
+              "base_weee_tax_row_disposition": {
+                "type":"string",
+                "required":false
+              },
+              "cost": {
+                "type":"string",
+                "required":false
+              },
+              "created_at": {
+                "type":"string",
+                "required":false
+              },
+              "discount_amount": {
+                "type":"string",
+                "required":false
+              },
+              "discount_invoiced": {
+                "type":"string",
+                "required":false
+              },
+              "discount_percent": {
+                "type":"string",
+                "required":false
+              },
+              "free_shipping": {
+                "type":"string",
+                "required":false
+              },
+              "gift_message_available": {
+                "type":"string",
+                "required":false
+              },
+              "gift_message_id": {
+                "type":"string",
+                "required":false
+              },
+              "gift_message": {
+                "type":"string",
+                "required":false
+              },
+              "is_qty_decimal": {
+                "type":"string",
+                "required":false
+              },
+              "is_virtual": {
+                "type":"string",
+                "required":false
+              },
+              "item_id": {
+                "type":"string",
+                "required":false
+              },
+              "name": {
+                "type":"string",
+                "required":false
+              },
+              "no_discount": {
+                "type":"string",
+                "required":false
+              },
+              "order_id": {
+                "type":"string",
+                "required":false
+              },
+              "original_price": {
+                "type":"string",
+                "required":false
+              },
+              "price": {
+                "type":"string",
+                "required":false
+              },
+              "product_id": {
+                "type":"string",
+                "required":false
+              },
+              "product_options": {
+                "type":"string",
+                "required":false
+              },
+              "product_type": {
+                "type":"string",
+                "required":false
+              },
+              "qty_canceled": {
+                "type":"string",
+                "required":false
+              },
+              "qty_invoiced": {
+                "type":"string",
+                "required":false
+              },
+              "qty_ordered": {
+                "type":"string",
+                "required":false
+              },
+              "qty_refunded": {
+                "type":"string",
+                "required":false
+              },
+              "qty_shipped": {
+                "type":"string",
+                "required":false
+              },
+              "quote_item_id": {
+                "type":"string",
+                "required":false
+              },
+              "row_invoiced": {
+                "type":"string",
+                "required":false
+              },
+              "row_total": {
+                "type":"string",
+                "required":false
+              },
+              "row_weight": {
+                "type":"string",
+                "required":false
+              },
+              "sku": {
+                "type":"string",
+                "required":false
+              },
+              "tax_amount": {
+                "type":"string",
+                "required":false
+              },
+              "tax_before_discount": {
+                "type":"string",
+                "required":false
+              },
+              "tax_invoiced": {
+                "type":"string",
+                "required":false
+              },
+              "tax_percent": {
+                "type":"string",
+                "required":false
+              },
+              "updated_at": {
+                "type":"string",
+                "required":false
+              },
+              "weee_tax_applied_amount": {
+                "type":"string",
+                "required":false
+              },
+              "weee_tax_applied_row_amount": {
+                "type":"string",
+                "required":false
+              },
+              "weee_tax_applied": {
+                "type":"string",
+                "required":false
+              },
+              "weee_tax_disposition": {
+                "type":"string",
+                "required":false
+              },
+              "weee_tax_row_disposition": {
+                "type":"string",
+                "required":false
+              },
+              "weight": {
+                "type":"string",
+                "id": "http://jsonschema.net/items/0/weight",
+                "required":false
+              }
+            }
+          }
+        
+  
+      },
+      "order_currency_code": {
+        "type":"string",
+        "required":false
+      },
+      "order_id": {
+        "type":"string",
+        "required":false
+      },
+      "parent_id": {
+        "type":"string",
+        "required":false
+      },
+      "payment": {
+        "type":"object",
+        "required":false,
+        "properties":{
+          "amount_ordered": {
+            "type":"string",
+            "required":false
+          },
+          "base_amount_ordered": {
+            "type":"string",
+            "required":false
+          },
+          "base_shipping_amount": {
+            "type":"string",
+            "required":false
+          },
+          "cc_exp_month": {
+            "type":"string",
+            "required":false
+          },
+          "cc_exp_year": {
+            "type":"string",
+            "required":false
+          },
+          "cc_last4": {
+            "type":"string",
+            "required":false
+          },
+          "cc_number_enc": {
+            "type":"string",
+            "required":false
+          },
+          "cc_owner": {
+            "type":"string",
+            "required":false
+          },
+          "cc_ss_start_month": {
+            "type":"string",
+            "required":false
+          },
+          "cc_ss_start_year": {
+            "type":"string",
+            "required":false
+          },
+          "cc_type": {
+            "type":"string",
+            "required":false
+          },
+          "created_at": {
+            "type":"string",
+            "required":false
+          },
+          "increment_id": {
+            "type":"string",
+            "required":false
+          },
+          "is_active": {
+            "type":"string",
+            "required":false
+          },
+          "method": {
+            "type":"string",
+            "required":false
+          },
+          "parent_id": {
+            "type":"string",
+            "required":false
+          },
+          "payment_id": {
+            "type":"string",
+            "required":false
+          },
+          "po_number": {
+            "type":"string",
+            "required":false
+          },
+          "shipping_amount": {
+            "type":"string",
+            "required":false
+          },
+          "updated_at": {
+            "type":"string",
+            "required":false
+          }
+        }
+      },
+      "quote_id": {
+        "type":"string",
+        "required":false
+      },
+      "remote_ip": {
+        "type":"string",
+        "required":false
+      },
+      "shipping_address_id": {
+        "type":"string",
+        "required":false
+      },
+      "shipping_address": {
+        "type":"object",
+        "required":false,
+        "properties":{
+          "address_id": {
+            "type":"string",
+            "required":false
+          },
+          "address_type": {
+            "type":"string",
+            "required":false
+          },
+          "city": {
+            "type":"string",
+            "required":false
+          },
+          "company": {
+            "type":"string",
+            "required":false
+          },
+          "country_id": {
+            "type":"string",
+            "required":false
+          },
+          "created_at": {
+            "type":"string",
+            "required":false
+          },
+          "fax": {
+            "type":"string",
+            "required":false
+          },
+          "firstname": {
+            "type":"string",
+            "required":false
+          },
+          "increment_id": {
+            "type":"string",
+            "required":false
+          },
+          "is_active": {
+            "type":"string",
+            "required":false
+          },
+          "lastname": {
+            "type":"string",
+            "required":false
+          },
+          "parent_id": {
+            "type":"string",
+            "required":false
+          },
+          "postcode": {
+            "type":"string",
+            "required":false
+          },
+          "region_id": {
+            "type":"string",
+            "required":false
+          },
+          "region": {
+            "type":"string",
+            "required":false
+          },
+          "street": {
+            "type":"string",
+            "required":false
+          },
+          "telephone": {
+            "type":"string",
+            "required":false
+          },
+          "updated_at": {
+            "type":"string",
+            "required":false
+          }
+        }
+      },
+      "shipping_amount": {
+        "type":"string",
+        "required":false
+      },
+      "shipping_description": {
+        "type":"string",
+        "required":false
+      },
+      "shipping_firstname": {
+        "type":"string",
+        "required":false
+      },
+      "shipping_lastname": {
+        "type":"string",
+        "required":false
+      },
+      "shipping_method": {
+        "type":"string",
+        "required":false
+      },
+      "shipping_name": {
+        "type":"string",
+        "required":false
+      },
+      "state": {
+        "type":"string",
+        "required":false
+      },
+      "status_history": {
+        "type":"array",
+        "required":false,
+        "items":
+          {
+            "type":"object",
+            "required":false,
+            "properties":{
+              "comment": {
+                "type":"string",
+                "required":false
+              },
+              "created_at": {
+                "type":"string",
+                "required":false
+              },
+              "increment_id": {
+                "type":"string",
+                "required":false
+              },
+              "is_active": {
+                "type":"string",
+                "required":false
+              },
+              "is_customer_notified": {
+                "type":"string",
+                "required":false
+              },
+              "parent_id": {
+                "type":"string",
+                "required":false
+              },
+              "status": {
+                "type":"string",
+                "required":false
+              },
+              "updated_at": {
+                "type":"string",
+                "required":false
+              }
+            }
+          }
+        
+  
+      },
+      "status": {
+        "type":"string",
+        "required":false
+      },
+      "store_currency_code": {
+        "type":"string",
+        "required":false
+      },
+      "store_id": {
+        "type":"string",
+        "required":false
+      },
+      "store_name": {
+        "type":"string",
+        "required":false
+      },
+      "store_to_base_rate": {
+        "type":"string",
+        "required":false
+      },
+      "store_to_order_rate": {
+        "type":"string",
+        "required":false
+      },
+      "subtotal": {
+        "type":"string",
+        "required":false
+      },
+      "tax_amount": {
+        "type":"string",
+        "required":false
+      },
+      "total_canceled": {
+        "type":"string",
+        "required":false
+      },
+      "total_invoiced": {
+        "type":"string",
+        "required":false
+      },
+      "total_offline_refunded": {
+        "type":"string",
+        "required":false
+      },
+      "total_online_refunded": {
+        "type":"string",
+        "required":false
+      },
+      "total_paid": {
+        "type":"string",
+        "required":false
+      },
+      "total_qty_ordered": {
+        "type":"string",
+        "required":false
+      },
+      "total_refunded": {
+        "type":"string",
+        "required":false
+      },
+      "updated_at": {
+        "type":"string",
+        "required":false
+      },
+      "weight": {
+        "type":"string",
+        "required":false
+      }
+  }
+}
